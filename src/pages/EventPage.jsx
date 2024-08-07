@@ -137,7 +137,7 @@ export const EventPage = ({ onEventDeleted }) => {
     }
   };
 
-  const creator = users.find((user) => user.id === event?.createdBy);
+  const creator = users.find((user) => user.id === String(event?.createdBy));
   const eventCategories =
     event?.categoryIds.length > 0
       ? event?.categoryIds.map(
@@ -160,9 +160,7 @@ export const EventPage = ({ onEventDeleted }) => {
             <strong>End Time:</strong>{" "}
             {new Date(event.endTime).toLocaleString()}
           </p>
-          <p>
-            <strong>Categories:</strong> {eventCategories.join(", ")}
-          </p>
+          <br />
           <div>
             <h3>Created by:</h3>
             <img src={creator?.image} alt={creator?.name} />
